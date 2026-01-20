@@ -1,0 +1,819 @@
+/*********************** BASE ***********************/
+
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:500");
+
+/* overall styling for all views */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: "Archivo Black", sans-serif;
+}
+
+/*********************** LAYOUT ***********************/
+
+/* reduce card + text size and fix positioning on phone*/
+@media (max-width: 600px) {
+
+    .activity-details {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .activity-details .activity-wrap {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .activity-details .form {
+        width: 90%;
+        padding: 0;             
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .activity-details .form-card {
+        padding: 0;    
+        max-width: 400px;    
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .activity-details .form-row{
+        flex-direction: column;
+    }
+
+    .activity-details .title {
+        font-size: 20px;
+    }
+
+    .activity-details .day-text {
+        font-size: 15px;
+    }
+
+    .activity-details .main {
+        font-size: 10px;
+    }
+}
+
+.page { min-height: 100vh; }
+
+.container, .form {
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.activity-wrap.layout{
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 30px;
+    align-items: end;
+}
+
+/* cards / blocks */
+.form-card, .border {
+    background: white;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.form-card {
+    border-radius: 20px;
+    padding: 30px 40px;
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
+}
+
+.border {
+    width: 280px;
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.check-list {
+    display: grid;
+    gap: 10px 24px;
+    margin-bottom: 20px;
+}
+
+/* layout used in multiple views*/
+
+.align-itinerary {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+#top-section {
+    position: relative;
+    max-width: 700px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100vh;
+    margin-left: 70px;
+    margin-right: auto;
+    padding-top: 10px;
+    justify-content: center;
+}
+
+#bottom-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* top + bottom section adjustments for smaller screens*/
+@media (max-width: 600px) {
+    #top-section {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 16px;
+        padding-right: 16px;
+        align-items: center;
+    }
+
+    #top-section .title{
+        font-size: 28px;
+    }
+
+    #top-section .header {
+        font-size: 20px;
+    }
+
+    #top-section .main {
+        font-size: 14px;
+    }
+
+    #bottom-section .form-title {
+        font-size: 22px;
+    }
+
+    #bottom-section .form-row {
+        font-size: 16px;
+    }
+}
+
+.start {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*********************** TEXT + FORMATTING ***********************/
+
+.title, .page-title, .text, .header, .day-text, .main, .page-subtitle {
+    text-align: center;
+}
+
+.title {
+    color: black;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.page-title {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin: 30px 0 8px;
+}
+
+@media (max-width: 600px) {
+    .page-title {
+        font-size: 28px;
+    }
+
+    .page-subtitle {
+        font-size: 14px;
+    }
+}
+
+.form-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+.text {
+   font-size: 30px;
+   margin-top: 50px;
+}
+
+.header{
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.day-text {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.main {
+    font-size: 16px;
+}
+
+.page-subtitle {
+    margin-top: 8px;
+    color: #667085;
+}
+
+.error-text {
+    color:rgb(209, 46, 46);
+    font-size:12px;
+    margin-top: 5px;
+}
+
+.counter-value{
+    min-width: 20px;
+    text-align: center;
+}
+
+.separator {
+    text-align: center;
+    font-size: 20px;
+    line-height: 1;
+}
+
+/*********************** COMPONENTS ***********************/
+
+/* navigation bar. code inspo taken from W3Schools horizontal navigation bar examples */
+.top {
+    overflow: hidden;
+    background-color: black;
+}
+
+.top a, .top span {
+    color: white;
+    text-align: center;
+    padding: 16px 10px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.top a { float: right; }
+.top span { float: left; }
+
+.top a:hover, .top a.active {
+    background-color: #999999;
+    color: black;
+}
+
+/* smaller text and padding on phones*/
+@media (max-width: 600px) {
+    .top a, .top span {
+        padding: 9px 7px;
+        font-size: 10px;
+    }
+}
+
+/* buttons. code inspo taken from W3Schools button examples (hover + shadow + click effect */
+.simple-button, .small-button, .button, .arrow {
+    border: none;
+    cursor: pointer;
+    color: black;
+    box-shadow: 0 4px #999;
+    font-family: inherit;
+}
+
+.small-button, .button, .arrow {
+    background: linear-gradient(180deg, #00C9FF 0%, #92FE9D 100%);
+}
+
+.button, .small-button, .simple-button{
+    border-radius: 12px;
+}
+
+.arrow, .simple-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow {
+    font-size: 28px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+}
+
+.small-button {
+    width: 25px;
+    margin: 2px auto;
+}
+
+.button, .simple-button {
+    font-size: 16px;
+    width: 130px;
+    padding: 10px 20px;
+    margin: 10px auto;
+}
+
+.small-button:disabled, .button:disabled {
+    opacity: 0.6;
+    cursor: auto;
+    box-shadow: none;
+}
+
+.small-button:active, .button:active, .simple-button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(2px);
+}
+
+.arrow:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(1px);
+}
+
+.small-button:disabled:active, .button:disabled:active {
+    box-shadow: none;
+    transform: none;
+}
+
+/* inputs */
+.check-box {
+    accent-color: #00C9FF;
+    width: 17px;
+    height: 17px;
+}
+
+.activity-box, .my-trip {
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease; 
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    background: linear-gradient(180deg,rgba(126, 225, 252, 1) 0%, rgba(163, 247, 174, 1) 100%);
+}
+
+.activity-box {
+    padding: 10px 14px;
+    border-radius: 996px;
+    color: #002a3a;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.my-trip {
+  width: 300px;
+  height: auto;
+  padding: 18px;
+  border-radius: 18px;
+}
+
+@media (max-width: 600px) {
+    .my-trip {
+        width: 240px;
+    }
+}
+
+.activity-box:hover, .my-trip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.activity-box a {
+    color: black;
+}
+
+/*********************** ICONS + IMAGES ***********************/
+
+/* dont show icons/background images on phone */
+@media (max-width: 600px) {
+    img.background-icon-top,
+    img.background-icon-big,
+    img.background-icon-middle,
+    img.background-icon-small,
+    .itinerary-icon-right img,
+    .itinerary-icon-left img,
+    img.plane-icon,
+    img.drink-icon,
+    img.bag-icon,
+    img.globe-icon, 
+    .plane-icon,
+    .drink-icon,
+    .bag-icon,
+    .globe-icon  {
+        display: none;
+    }
+
+}
+
+.plane-icon, 
+.drink-icon, 
+.bag-icon, 
+.globe-icon, 
+.background-icon-top, 
+.background-icon-big, 
+.background-icon-middle, 
+.background-icon-small,
+.itinerary-icon-right,
+.itinerary-icon-left {
+    position: absolute;
+    display: block;
+    max-width: 100%;
+    height: auto;        
+    object-fit: contain;
+}
+
+.background-icon-top, 
+.background-icon-big, 
+.background-icon-middle, 
+.background-icon-small,
+.itinerary-icon-right,
+.itinerary-icon-left {
+    z-index: -1;
+}
+
+.background-icon-big, .background-icon-middle, .background-icon-small{
+    opacity: 0.5;
+}
+
+.plane-icon, .drink-icon, .bag-icon, .globe-icon {
+    width: 14%;
+}
+
+.itinerary-icon-right, .itinerary-icon-left {
+    height: 80%;
+    width: 30%;
+    opacity: 0.6;
+}
+
+.plane-icon { top: 10%; right: -70%; transform: rotate(260deg); }
+.drink-icon { top: 29%; right: -54%; }
+.bag-icon { top: 53%; right: -58%; transform: rotate(40deg); }
+.globe-icon { top: 73%; right: -70%; }
+
+.background-icon-top {
+    top: 2%;
+    right: -152%;
+    width: 100%;
+    height: 100%;
+}
+
+.background-icon-big { top: 115%; width: 40%; height: 85%; right: 55%; }
+.background-icon-middle { top: 110%; width: 21%; height: 45%; right: 15%; }
+.background-icon-small { top: 175%; width: 11%; height: 25%; right: 10%; }
+
+.itinerary-icon-right { top: 0%; left: 42%; }
+.itinerary-icon-left { top: 40%; right: 42%; transform: rotate(180deg); }
+
+/* styling for pictures from API */
+.place-photo {
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
+}
+
+/* hovering effect inspo taken from W3Schools examples */
+.place-photo:hover {
+  transform: scale(1.2);
+}
+
+/* formatting */
+
+.counter{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/*********************** AUTHENTICATION STYLING ***********************/
+
+/* 
+    Styling inspo:  
+    - main container (flexbox properties): CSS-tricks 
+    - Other (background, box shadow, bordr, position, etc): developer.mozilla 
+*/   
+
+@media (max-width: 600px) {
+    .auth-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: center; 
+        padding: 0 12px;       
+        box-sizing: border-box;
+    }
+
+    .auth-wrap .form-card {
+        width: 95%;
+        padding: 10px 2px; 
+    }
+}
+
+.auth-card {
+    background: rgb(210, 233, 231);
+    border: 4px solid #213333;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.auth-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* authentication inputs */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #352f2f;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.input-group input.input-error {
+    border-color: #e74c3c;
+}
+
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    color: #666;
+}
+
+.field-error, .password-hint, .forgot-password-hint {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.password-hint, .forgot-password-hint {
+    color: #666;
+}
+
+.field-error {
+    color: #e74c3c;
+}
+
+.forgot-password-hint {
+    font-style: italic;
+}
+
+/* user feedback styling */
+.error-message, .success-message {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.error-message {
+    background-color: #fee;
+    color: #c33;
+}
+
+.success-message {
+    border-left: 4px solid #27ae60;
+    background-color: #efe;
+    color: #3c3;
+}
+
+/* buttons */
+.auth-button {
+    width: 100%;
+    padding: 14px;
+    border: none; 
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer; 
+    transition: all 0.3s;
+    margin-bottom: 20px;
+}
+
+.auth-button.primary {
+    background: linear-gradient(180deg, #00C9FF 0%, #92FE9D 100%);
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0, 201, 255, 0.3);
+}
+
+.auth-button.primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 201, 255, 0.4);
+}
+
+.auth-button.primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* links */
+.auth-links {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth-links .link {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+/*********************** LOADING SPINNER ***********************/
+
+/* code inspo from codepen.io */
+#container, .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#spinner {
+  width: 120px;
+  height: 120px;
+}
+
+svg {
+  overflow: visible;
+}
+
+.animated-logo {
+  transform-origin: 50% 50%;
+  transform: scale(0.7);
+  opacity: 0;
+  animation: spinner 3000ms infinite ease-in-out;
+}
+
+.animated-logo-2 { animation-delay: 900ms; }
+.animated-logo-3 { animation-delay: 1900ms; }
+
+.animated-logo path,
+.animated-logo ellipse {
+  fill: url(#iconGradientSpinner);
+}
+
+@keyframes spinner {
+  0% { transform: scale(0.7) rotate(0deg); opacity: 0; }
+  9% { opacity: 1; }
+  18% { transform: scale(0.7) rotate(360deg); }
+  33% { transform: scale(0.7) rotate(360deg); opacity: 1; }
+  45% { transform: scale(0.7) rotate(520deg); opacity: 0; }
+}
+
+/* share button */
+.btn-share {
+  background: linear-gradient(180deg, #00C9FF 0%, #92FE9D 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px #999;
+  color: black;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 10px 20px;
+  width: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-share::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--btn-color);
+  border-radius: 24px;
+  z-index: -1;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-text,
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-icon {
+  margin-left: 8px;
+}
+
+.btn-share svg path {
+  fill: black;
+}
+
+.social-icons li a {
+  text-decoration: none;
+}
+
+/* social icons */
+.social-icons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transform: translateY(-50%);
+}
+
+.social-icons li {
+  flex: 1;
+  text-align: center;
+}
+
+.social-icons li a {
+  display: inline-flex;
+  transform: translateY(55px);
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.social-icons li a:hover {
+  opacity: 0.5;
+}
+
+/* hover effects */
+.btn-share:hover::before {
+  transform: scale(1.2);
+}
+
+.btn-share:hover .btn-text,
+.btn-share:hover .btn-icon {
+  transform: translateY(-55px);
+}
+
+.btn-share:hover .social-icons li a {
+  transform: translateY(0);
+}
+
+/* delays (replaces SCSS @for) */
+.btn-share:hover .social-icons li:nth-child(1) a {
+  transition-delay: 0.15s;
+}
+
+.btn-share:hover .social-icons li:nth-child(2) a {
+  transition-delay: 0.2s;
+}
+
+.btn-share:hover .social-icons li:nth-child(3) a {
+  transition-delay: 0.25s;
+}
+
+
+
